@@ -18,7 +18,7 @@ echo $sql;
           
         if($count == 1){  
             echo "<h1><center> Gaming </center></h1>";  
-            include 'game.html';
+            include 'home.html';
            
         }  
         else{  
