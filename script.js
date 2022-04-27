@@ -166,3 +166,4 @@ var textNodes = [
 
 startGame()
 console.log("Why are we still here? Just to suffer")
+
