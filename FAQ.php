@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require('header.html'); ?>
+    <?php require('header.php'); ?>
 <table>
     <tr>
     <td>AAAAAa</td>
