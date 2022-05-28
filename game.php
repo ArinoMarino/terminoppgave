@@ -23,7 +23,6 @@
 
     <script src="script.js"></script>
 
-    <footer>Er det noe som ikke fungerer? Send en beskjed til arloa001@osloskolen.no</footer>
 </body>
 
 </html>

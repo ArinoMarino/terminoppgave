@@ -14,10 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="stylesheet" href="">
-    <style>
-        body{ font: 14px sans-serif; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <?php include 'header.php'; ?>
