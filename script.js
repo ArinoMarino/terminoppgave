@@ -152,6 +152,8 @@ var textNodes = [
 
 ]
 
+
+
  /*   {
         id: ,
         text: '',
@@ -166,3 +168,19 @@ var textNodes = [
 
 startGame()
 console.log("Why are we still here? Just to suffer")
+
+
+console.table(textNodes)
+/*textNodes.pop(
+    {
+        id: ,
+        text: '',
+        options: [
+            {
+                text: ' ',
+                nextText: ,
+            },
+        ]
+    }, 
+)
+*/
