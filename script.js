@@ -14,10 +14,10 @@ function startGame() { // starter spillet på node 1, har med lolz som true sån
     showTextNode(1)
 }
 
-function showTextNode(textNodeIndex) {
+function showTextNode(textNodeIndex) { //Finner textnoden med id lik parameteret
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
-    textElement.innerText = textNode.text
-    while (optionButtonsElement.firstChild) {
+    textElement.innerText = textNode.text //setter teksten i textElement lik teksten i noden
+    while (optionButtonsElement.firstChild) { //fjerner gamle options
         optionButtonsElement.removeChild(optionButtonsElement.firstChild)
     }
 
@@ -38,12 +38,11 @@ function showOption(option) { //viser options hvis alle påkrevde states er tils
 
 function selectOption(option) {
     const nextTextNodeId = option.nextText
-    if (nextTextNodeId <= 0) {
+    if (nextTextNodeId <= 0) { //starter spillet på nytt om nextext er 0
         return startGame()
     }
     state = Object.assign(state, option.setState)
-    showTextNode(nextTextNodeId)
-    console.log(state)
+    showTextNode(nextTextNodeId) //viser textnoden med id lik nextText
 }
 
 var textNodes = [ //array med objekter, en for hver tekst prompt med ulike muligheter
@@ -221,9 +220,6 @@ var textNodes = [ //array med objekter, en for hver tekst prompt med ulike mulig
         }
     ]
 },
-
-
-
 
 
     {
