@@ -4,7 +4,7 @@ session_start();
  
 // Hvis brukeren allerede er koblet til, send dem til welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: userprofile.php");
     exit;
 }
  

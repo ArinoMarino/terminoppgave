@@ -1,3 +1,14 @@
+<?php
+// starter session
+session_start();
+
+// Se om bruker er logget inn, hvis ikke send til login siden
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +22,7 @@
 </head>
 
 <body>
+<?php require('header.php'); ?>
     <div class="container">
         <div id="text">Text</div>  <!--  fortellende historie  -->
         <div id="option-buttons" class="btn-grid">  <!--  knappene der man kan ta valg   -->

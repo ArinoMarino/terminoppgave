@@ -2,7 +2,7 @@
 // Database credentials, kjører på localhost med root bruker uten passord, database: terminoppgave.
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'V1L3v3r13tSamfunn');
 define('DB_NAME', 'terminoppgave');
  
 // kobler til serveren
