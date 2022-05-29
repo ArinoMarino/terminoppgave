@@ -2,7 +2,7 @@
 // starter session
 session_start();
  
-// Hvis brukeren allerede er koblet til, send dem til welcome page
+// Hvis brukeren allerede er koblet til, send dem til velkomst/profilside 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: userprofile.php");
     exit;
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Sender brukeren til velkommen siden
-                            header("location: welcome.php");
+                            header("location: userprofile.php");
                         } else{
                             // Passord er feil send en feilmelding
                             $login_err = "Invalid username or password.";

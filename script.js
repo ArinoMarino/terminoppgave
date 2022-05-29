@@ -1,15 +1,15 @@
-function RNGNum(min, max) { // min og max inkludert 
+function RNGNum(min, max) { // Lager et tilfeldig tall mellom to deklarerte parametere. Min og max er inkludert
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 
-const textElement = document.getElementById('text')
-const optionButtonsElement = document.getElementById('option-buttons')
+const textElement = document.getElementById('text') //deklarerer variabel textElement som diven der fortellende tekst skal være
+const optionButtonsElement = document.getElementById('option-buttons') //Div for der knappene er inni
 
 
-let state = {}
+let state = {} //deklarerer state
 
-function startGame() { // starter spillet på node 1 med tomme states
+function startGame() { // starter spillet på node 1, har med lolz som true sånn at man kan velge borgerskapet på starten
     state = {lolz:true}
     showTextNode(1)
 }
@@ -46,7 +46,7 @@ function selectOption(option) {
     console.log(state)
 }
 
-var textNodes = [
+var textNodes = [ //array med objekter, en for hver tekst prompt med ulike muligheter
     {
         id: 1,
         text: 'Class?????',
@@ -101,7 +101,11 @@ var textNodes = [
             {
                 text: 'Bli hjemme',
                 nextText: 3,
-
+            },
+            {
+                text: 'We go jim!',
+                nextText: 50,
+                requiredState: (currentState)=> currentState.barb
             }
         ]
     },
@@ -199,10 +203,24 @@ var textNodes = [
             {
                 text: 'Vondt i magen :(',
                 requiredState: (currentState) => currentState.dysenteri
+            },
+            {
+                text: 'Helsevesenet i USA presterer dårligere i de fleste vertikaler. Høye kostnader er hovedårsaken til at amerikanere ikke får tilgang til helsetjenester. Amerikanere med inntekt under gjennomsnittet er mye mer berørt, siden det har blitt uoverkommelig å besøke en lege når de er syke, få en anbefalt test eller oppfølging. Disse pasientene har erkjent vanskelighetene med å betale medisinske regninger og andre utgifter.',
+                nextText: 2,
             }
+
         ]
     },
-
+{
+    id: 50,
+    text: 'Gym :)',
+    options: [
+        {
+            text: 'Tren hele dagen, gå hjem og legg deg',
+            nextText: 3
+        }
+    ]
+},
 
 
 
@@ -215,29 +233,13 @@ var textNodes = [
             {
             text: ' Prøv på nytt',
             setState: { lolz: false},
-            nextText: 0
+            nextText: 1
             }
         ]
     },
 ]
 
 
-
-
-
-
-/*   {
-       id: ,
-       text: '',
-       options: [
-           {
-               text: ' ',
-               nextText: ,
-           },
-       ]
-   }, 
-   */
-
 startGame()
-console.log("Why are we still here? Just to suffer")
+
 

@@ -26,7 +26,7 @@ require_once "config.php";
 <?php include 'header.php'; ?>
 <div class='parent'>
     <div class='div2 row'><a href="reset-password.php" class="btn btn-warning">Lag et nytt passord</a>
-        <a href="logout.php" class="btn btn-danger ml-3">Logg ut av kontoen din</a></div>
+        <a href="logout.php" class="btn btn-danger ml-3">Logg ut</a></div>
     <div class='div1'>
         <h1>Hei på deg, <?php echo htmlspecialchars($_SESSION["username"]);?>. Dette er din side </h1>
 

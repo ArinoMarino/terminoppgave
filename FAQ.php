@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
-            echo "Spørsmålet ditt er sent inn!";
+            echo "Spørsmålet ditt er sent inn! Du kommer til å motta en e-mail med svar innen 5 virkedager";
         } else{
             echo "Oops! Something went wrong. Please try again later.";
         }
@@ -88,6 +88,10 @@ mysqli_close($link);
                 <input type="submit" value="Submit">
             </div>
         </form>
+        <p>Hvordan man spiller (På spill)</p>
+        <video src="medie/Tutorial-HvordanSpille.mp4" width='600' height='400' controls></video>
+        <p>Hvordan man lager et nytt passord (På brukerprofil)</p>
+        <video src="medie/Tutorial-EndrePassord.mp4" width='600' height='400' controls></video>
     </div>
 
 

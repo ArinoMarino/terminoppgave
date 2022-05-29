@@ -32,7 +32,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
         <div class="spaces">
             
-            <a href="userprofile.php"><img src="PersonProfile.svg" alt="Personlig profil"></a>
+            <a href="userprofile.php"><img src="medie/PersonProfile.svg" alt="Personlig profil"></a>
 
         
         </div>
