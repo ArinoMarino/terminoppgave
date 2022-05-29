@@ -1,3 +1,26 @@
+body{
+    color: white;
+    background-color: black;
+    font: 14px sans-serif; 
+    text-align: center;
+
+    padding: 0;
+    margin: 0;
+
+min-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.wrapper{ 
+    width: 360px; 
+}
+
+
 #login{   
     background: #eee;  
 }  
@@ -17,14 +40,14 @@
 }  
 
 
-body {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+a{
+    color: yellow;
+    text-decoration: none;
+    padding: 15px;
+}
+
+a:hover{
+    text-decoration: underline;
 }
   
   .btn:hover {
@@ -32,10 +55,20 @@ body {
   }
 
 
-  footer {
-      margin-top: 200px;
-  }
 
   .container {
       margin-top: 40px;
   }
+
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 2 / 6 / 5; }
+    .div2 { grid-area: 1 / 1 / 6 / 2; }
+    .div3 { grid-area: 1 / 5 / 6 / 6; }

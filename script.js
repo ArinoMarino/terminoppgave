@@ -1,25 +1,23 @@
-function RNGNum(min, max) { // min og max inkludert 
+function RNGNum(min, max) { // Lager et tilfeldig tall mellom to deklarerte parametere. Min og max er inkludert
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-var rndInt = RNGNum(1, 3); //tilfeldig tall mellom 1 og 3
-console.log(rndInt)
 
-const textElement = document.getElementById('text')
-const optionButtonsElement = document.getElementById('option-buttons')
+const textElement = document.getElementById('text') //deklarerer variabel textElement som diven der fortellende tekst skal være
+const optionButtonsElement = document.getElementById('option-buttons') //Div for der knappene er inni
 
 
-let state = {}
+let state = {} //deklarerer state
 
-function startGame() { // starter spillet på node 1 med tomme states
-    state = {}
+function startGame() { // starter spillet på node 1, har med lolz som true sånn at man kan velge borgerskapet på starten
+    state = {lolz:true}
     showTextNode(1)
 }
 
-function showTextNode(textNodeIndex) {
+function showTextNode(textNodeIndex) { //Finner textnoden med id lik parameteret
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
-    textElement.innerText = textNode.text
-    while (optionButtonsElement.firstChild) {
+    textElement.innerText = textNode.text //setter teksten i textElement lik teksten i noden
+    while (optionButtonsElement.firstChild) { //fjerner gamle options
         optionButtonsElement.removeChild(optionButtonsElement.firstChild)
     }
 
@@ -40,27 +38,17 @@ function showOption(option) { //viser options hvis alle påkrevde states er tils
 
 function selectOption(option) {
     const nextTextNodeId = option.nextText
-    if (nextTextNodeId <= 0) {
+    if (nextTextNodeId <= 0) { //starter spillet på nytt om nextext er 0
         return startGame()
     }
     state = Object.assign(state, option.setState)
-    showTextNode(nextTextNodeId)
+    showTextNode(nextTextNodeId) //viser textnoden med id lik nextText
 }
 
-var textNodes = [
+var textNodes = [ //array med objekter, en for hver tekst prompt med ulike muligheter
     {
         id: 1,
-        text: 'CHARACTER CREATOR',
-        options: [
-            {
-                text: 'next',
-                nextText: 2
-            },
-        ]
-    },
-    {
-        id: 2,
-        text: 'choose your class',
+        text: 'Class?????',
         options: [
             {
                 text: 'BardBarian',
@@ -69,118 +57,185 @@ var textNodes = [
 
             },
             {
-                text: 'Rnger',
-                setState: { rnger: true },
-                nextText: 3
+                text: 'Borgerskapet',
+                nextText: 100,
+                requiredState: (currentState)=> currentState.lolz
             },
             {
                 text: 'WizardicianLock',
                 setState: { wiz: true },
                 nextText: 3
             },
+            {
+                text: 'Nei takk',
+                nextText: 3,
+            },
+            
+        ]
+
+    },
+
+    {
+        id: 2,
+        text: 'Du døde',
+        options: [
+            {
+                text: 'Start på nytt',
+                nextText: 0,
+            },
         ]
     },
     {
         id: 3,
-        text: 'You wake up in your bed feeling refreshed and well rested, what should you do today?',
+        text: 'Du våkner opp, hva føler du for å gjøre i dag?',
         options: [
             {
-                text: 'Take a walk in the woods',
+                text: 'Ta en liten skogstur',
                 nextText: 4,
             },
             {
-                text: 'Drink away your existensial dread in the local tavern',
+                text: 'DET ER FREDAG! dra til en taverna woop woop',
+                nextText: 30,
+            },
+            {
+                text: 'Bli hjemme',
                 nextText: 3,
             },
             {
-                text: 'Stay in bed',
-                nextText: 3
+                text: 'We go jim!',
+                nextText: 50,
+                requiredState: (currentState)=> currentState.barb
             }
         ]
     },
     {
         id: 4,
-        text: 'While walking among the trees you spot a beautiful flower. You crouch down to admire it when you hear a weird noise all around you. Then suddenly...',
+        text: 'Du kommer til et veikryss',
         options: [
             {
-                text: 'next',
+                text: 'høyre',
                 nextText: 5,
             },
+            {
+                text: 'venstre',
+                nextText: 10
+            }
         ]
 
     },
+
+
     {
-        id: 5,
-        text: 'YOU FALL! Drakness swallows you as you plummet into the caverns. Several hours later you wake up. Alive, but seemingly captured by gnelfs.' + 
-        ' a' ,
+        id: 10,
+        text: 'Gikk deg vekk der gitt',
         options: [
             {
-                text: ' ',
-                nextText: 4,
+                text: 'let videre',
+                nextText: RNGNum(10, 12)
             },
+            {
+                text: 'Teleporter',
+                nextText: 12,
+                requiredState: (currentState) => currentState.wiz
+            }
+        ]
+    },
+    {
+        id: 11,
+        text: 'Gikk deg vekk der gitt',
+        options: [
+            {
+                text: 'let videre',
+                nextText: RNGNum(10, 12)
+            }
+        ]
+    },
+    {
+        id: 12,
+        text: 'Neimen der var veien ja',
+        options: [
+            {
+                text: 'Endelig! La oss komme oss av gårde',
+                nextText: 13,
+            },
+            {
+                text: 'la oss gå tilbake lol',
+                nextText: 10
+            }
         ]
     },
 
     {
         id: 30,
-        text: 'There\'s just apple juice and water here',
+        text: 'Vibrasjonene er plettfri, men du begynner å bli tørst. Heldigvis er det flere ting å velge mellom her',
         options: [
             {
-                text: 'Water',
-                setState: { dysentery: true },
+                text: 'Vann',
+                setState: { dysenteri: true },
                 nextText: 31
             },
             {
-                text: 'Juice',
-                nextText: 32
+                text: 'Eplejuice',
+                nextText: 3
             },
 
         ]
     },
     {
         id: 31,
-        text: 'You died of dysentery',
+        text: 'Det vannet var ikke bangin as',
         options: [
             {
-                text: 'RIP',
-                nextText: 1,
-                startGame
+                text: 'Det går sikkert fint, fest videre',
+                nextText: 2,
+            },
+            {
+                text: 'Burde prolly stikke til sykehuset',
+                nextText: 40,
             },
         ]
     },
-  
+    {
+        id: 40,
+        text: 'Velkommen til sykehuset! Hva kan vi hjelpe deg med?',
+        options: [
+            {
+                text: 'Vondt i magen :(',
+                requiredState: (currentState) => currentState.dysenteri
+            },
+            {
+                text: 'Helsevesenet i USA presterer dårligere i de fleste vertikaler. Høye kostnader er hovedårsaken til at amerikanere ikke får tilgang til helsetjenester. Amerikanere med inntekt under gjennomsnittet er mye mer berørt, siden det har blitt uoverkommelig å besøke en lege når de er syke, få en anbefalt test eller oppfølging. Disse pasientene har erkjent vanskelighetene med å betale medisinske regninger og andre utgifter.',
+                nextText: 2,
+            }
 
+        ]
+    },
+{
+    id: 50,
+    text: 'Gym :)',
+    options: [
+        {
+            text: 'Tren hele dagen, gå hjem og legg deg',
+            nextText: 3
+        }
+    ]
+},
+
+
+    {
+        id:100,
+        text: 'nei huff',
+        options: [
+            {
+            text: ' Prøv på nytt',
+            setState: { lolz: false},
+            nextText: 1
+            }
+        ]
+    },
 ]
 
 
-
- /*   {
-        id: ,
-        text: '',
-        options: [
-            {
-                text: ' ',
-                nextText: ,
-            },
-        ]
-    }, 
-    */
-
 startGame()
-console.log("Why are we still here? Just to suffer")
 
 
-console.table(textNodes)
-/*textNodes.pop(
-    {
-        id: ,
-        text: '',
-        options: [
-            {
-                text: ' ',
-                nextText: ,
-            },
-        ]
-    }, 
-)
-*/
